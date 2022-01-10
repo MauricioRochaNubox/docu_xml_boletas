@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<EnvioBOLETA xmlns="http://www.sii.cl/SiiDte" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sii.cl/SiiDte EnvioBOLETA_v11.xsd" version="1.0">
+  <SetDTE ID="SetDoc">
+    <!-- declara un resumen de la información enviada, es obligatoria -->
+    <Caratula version="1.0">
+      <RutEmisor>76204700-4</RutEmisor>
+      <RutEnvia>10581540-9</RutEnvia>
+      <RutReceptor>60803000-K</RutReceptor>
+      <FchResol>2014-08-22</FchResol>
+      <NroResol>80</NroResol>
+      <TmstFirmaEnv>2022-01-07T18:09:01</TmstFirmaEnv>
+      
+      <!-- en este caso son 2 boletas (codigo 39) -->
+      <SubTotDTE>
+        <TpoDTE>39</TpoDTE>
+        <NroDTE>2</NroDTE>
+      </SubTotDTE>
+    </Caratula>
+    <!-- ======================== -->
+    <!-- primera boleta -->
+    <!-- ======================== -->
+    <DTE version="1.0">
+      <Documento ID="F871571T39">
+
+        <!-- identificación y totales del documento, es obligatorio. -->
+        <Encabezado>
+          <IdDoc>
+            <!-- TipoDTE: obligatorio, numerico, largo 2, Indica que el documento es:
+                39: Boleta Electrónica
+                41: Boleta No Afecta o Exenta Electrónica
+						
+				validaciones:
+					1.- el campo debe ser numerico
+                    2.- el tipo de documento debe ser 39 o 41
+            -->
+            <TipoDTE>39</TipoDTE>
+
+
+            <!-- Folio: obligatorio, largo 10, numerico, folio del documento electrónico
+						
+				validaciones:
+					1.- el campo debe ser numerico
+            -->
+            <Folio>871571</Folio>
+
+            <!-- Fecha de emisión del docto (AAAA-MM-DD), largo 10, alfaumerico.
+            
+            validaciones:
+            
+                1.- Fecha válida entre 2002-08-01 y 2050-12-31
+            -->
+            <FchEmis>2022-01-07</FchEmis>
+
+
+            <!-- Indicador Servicio: El objetivo del indicador es identificar el tipo de transacción, largo 1, numerico.
+
+            (solo contexto) maestro deberia aparecer en el frontend:
+                1.- Boletas de servicios periódicos
+                2.- Boletas de servicios periódicos domiciliarios
+                3.- Boletas de venta y servicios
+                4.- Boleta de Espectáculo emitida por cuenta de Terceros
+
+            
+            ** VALOR POR DEFECTO: 3
+            -->
+            <IndServicio>3</IndServicio>
+
+            <!-- Indicador Montos Netos, largo 1, numerico.
+                 Este indicador se utiliza para expresar que el precio unitario y el valor de todas las líneas de
+                detalles corresponden a Montos netos, es decir no incluyen el IVA. 
+                
+                * No aplica en boleta exenta
+                * Opcional para boleta afecta
+
+                validaciones:
+
+                    1.- 2: Líneas de detalle indican montos netos
+
+                
+                (Agregar un ejemplo)
+            -->
+            <IndMntNeto></IndMntNeto>
+
+            
+
+            <!-- Fecha de vencimiento (pago), formato (AAAA-MM-DD), largo 10, alfanumerico, condicional,
+
+                Validaciones:
+
+                    1.- Fecha válida entre 2002-08-01 y 2050-12-31
+            -->
+            <FchVenc>2022-01-07</FchVenc>
+          </IdDoc>
+
+          <Emisor>
+            <!-- Rut Emisor , Con guion y dígito verificador, largo 10, numerico, obligatorio.
+            
+            validaciones:
+                1.- Cuerpo numérico entre 100.000 y 99 millones, guion y dígito verificador alfanumérico entre 0 y 9 o K
+            -->
+            <RUTEmisor>76204700-4</RUTEmisor>
+
+            <!-- Nombre o Razón Social Emisor, largo 100, alfanunerico, opcional -->
+            <RznSocEmisor/>
+
+            <!-- Giro del negocio del Emisor, largo 80, alfanumerico.
+            Dato opcional. Se debe indicar el giro del emisor. No es preciso registrar todos los giros, sino que se
+            podrá registrar sólo el giro que corresponde a la transacción.
+            -->
+            <GiroEmisor/>
+
+            <!-- Código sucursal, largo 9, numerico, condicional.
+                
+                Código numérico entregado por el SII, que identifica a cada sucursal que está identificada en el Servicio
+                de Impuestos Internos. Si no hay sucursales se puede omitir. -->
+            <CdgSIISucur/>
+
+            <!--
+                Dirección Origen, largo 70, alfanumerico, opcional.
+
+                Datos correspondientes a Dirección de sucursal desde donde se emite el documento.
+            -->
+            <DirOrigen/>
+
+            <!-- Comuna origen, largo 20, alfanumerico, opcional -->
+            <CmnaOrigen>
+
+            <!-- Ciudad origen, largo 20, alfanumerico, opcional -->
+            <CiudadOrigen>
+
+          </Emisor>
+
+          <Receptor>
+            <!-- 
+              Rut Receptor, laergo 10, alfanumerico.
+
+              Rut del Cliente Receptor de la Boleta. Con guion y dígito verificador.
+              1.- Es obligatorio que venga un Rut válido o el Código Interno.
+              2.- Se acepta que venga un 0 en los casos en que el cliente se identifica con Código Interno.
+              3.- Se imprime si es distinto de 0 y de 66.666.666-6
+
+              validaciones: 
+                1.- Cuerpo numérico, guion y dígito verificador alfanumérico entre 0 y 9 o K. Debe venir un 0, cuando el
+                    cliente se identifica sólo con código interno.
+
+                2.- Sólo en caso de Boletas de Ventas y Servicios no periódicos ni Domiciliarios, en caso de no
+                    contar con el RUT o código interno del cliente, se debe utilizar el RUT genérico 66.666.666-6.
+            -->
+            <RUTRecep>0000004-3</RUTRecep>
+
+            <!-- Nombre Receptor, largo 40, alfanumerico, obligatorio. -->
+            <RznSocRecep>CLIENTE AL PASO</RznSocRecep>
+
+            
+            <!-- Contacto Receptor. largo 80, alfanumerico, opcional
+            Nombre adicional o código adicional para identificar al cliente.
+            -->
+            <Contacto/>
+
+            <!-- Dirección Receptor, largo 70, alfanumerico, condicional
+            
+                validaciones: 
+                    1.- Es opcional cuando Indicador Servicio 3
+            -->
+            <DirRecep>a</DirRecep>
+            
+            <!-- Comuna Receptor, largo 20, alfanumerico, condicional -->
+            <CmnaRecep>SANTIAGO</CmnaRecep>
+          </Receptor>
+
+          <Totales>
+            <!-- Monto neto, largo 18, numerico
+                 Solo es válido si la boleta no es exenta.
+                 Suma de valores total de ítems afectos - descuentos + recargos (Asignados a ítems afectos).
+                 Si no está presente el Indicador de Montos Netos, el resultado anterior se debe dividir por (1 + tasa IVA)
+            -->
+            <MntNeto>3621</MntNeto>
+
+            <!-- Monto exento, largo 18, numerico.
+            Suma de Valor por línea de detalle para Indicador Exención=1 -->
+            <MntExe>
+
+            <!-- IVA, largo 18, numerico.
+            Sólo es válido si la boleta no es exenta. Igual a la tasa (%) de IVA aplicada al Monto neto -->
+            <IVA>688</IVA>
+
+            <!-- Monto Total, largo 18, numerico.
+            Se calcula como Monto neto + IVA + Monto Exento. -->
+            <MntTotal>4309</MntTotal>
+          </Totales>
+
+        </Encabezado>
+        
+        <!-- validar detalles opcional -->
+        <Detalle>
+            <!-- N° de Línea o N° Secuencia, largo 4, numerico.
+            Número del ítem. Desde 1 a 1000
+
+            Validacion:
+            Número secuencial de la línea. La obligatoriedad se refiere a que si se incluye esta zona debe haber al
+            menos una línea y este caso debe ir el dato de número de línea -->
+          <NroLinDet>1</NroLinDet>
+
+          <!-- por ahora no -->
+          <!-- <CdgItem>
+            <TpoCodigo>Interna</TpoCodigo>
+            <VlrCodigo>1</VlrCodigo>
+          </CdgItem> -->
+
+          <!-- Nombre del ítem, largo 80, alfanumerico.
+          Nombre del producto o servicio.
+        
+          Si el campo Ítem Espectáculo no es nulo se debe indicar un nombre de producto o servicio
+          que tenga relación con “TICKET” o “VALOR SERVICIO - COMISIÓN” 
+           -->
+          <NmbItem>PAN CORRIENTE</NmbItem>
+
+        <!-- Cantidad, largo 18, numerico, condicional.
+          
+          Cantidad del ítem en 12 enteros y 6 decimales. 
+          Se debe indicar en el caso de venta de mercaderías o productos
+
+
+          -->
+          <QtyItem>1</QtyItem>
+
+
+        <!-- Precio Unitario, largo 18, numerico, condicional.  
+            Precio con 12 enteros y 6 decimales.
+            Este precio es bruto con IVA, excepto cuando el Indicador Montos Netos tiene el valor 2.
+            Se debe indicar en el caso de venta de mercaderías o productos 
+           -->
+          <PrcItem>4309</PrcItem>
+
+
+          <!-- Indicador exención, largo 1, numerico, condicional
+
+          Indica si el servicio es exento o no a impuesto o de monto no debe ser facturado. 
+          En el caso que sea 2, no se debe considerar para el cálculo del IVA del período. 
+          No se usa para saldo anterior
+
+
+            si la linea esta marcada exenta el valor por defecto es 1, sino el tag no se agrega -->
+          <IndExe>1</IndExe>
+
+
+          <!-- no  considerado -->
+          <!-- <DscItem>.</DscItem> -->
+
+          
+          <!-- Porcentaje de Descuento, largo 5 numerico, opcional.
+          Porcentaje (%) de Descuento, de 3 enteros y 2 decimales.
+
+          validaciones:
+            1.- Valor Numérico, entre los valores 0 y 100 incluidos
+          
+          -->
+          <DescuentoPct>
+          
+          <!-- Monto Descuento, largo 18, numerico, condicional.
+          Correspondiente al anterior. Totaliza el descuento aplicado al ítem. Este monto es bruto
+          con IVA, excepto cuando el Indicador Montos Netos tiene el valor 2 
+          
+          validaciones:
+            1.- Valor Numérico. Si hay descuento en porcentaje, debe ir el monto del descuento.  -->
+          <DescuentoMonto>
+
+          <!-- Porcentaje de Recargo, largo 5 numerico, opcional.
+          Porcentaje (%) de Descuento, de 3 enteros y 2 decimales.
+
+          validaciones:
+            1.- Valor Numérico, entre los valores 0 y 100 incluidos -->
+          <RecargoPct>
+
+          <!-- Monto Recargo, largo 18, numerico, condicional.
+          Correspondiente al anterior. Totaliza el Recargo aplicado al item. Este monto es bruto con IVA,
+          excepto cuando el Indicador Montos Netos tiene el valor 2
+
+          Validacion:
+            1.- Valor Numérico. Si hay Recargo en porcentaje, debe ir el Monto del Recargo. -->
+          <RecargoMonto>
+
+          <!-- Valor por línea de detalle, largo 18, numerico, obligatorio.
+          
+          (Precio Unitario * Cantidad) - Monto Descuento + Monto Recargo
+          Este valor es bruto (con IVA), excepto cuando el campo "Indicador Montos Netos" tiene el valor 2
+          
+          validaciones:
+            1.- Valor numérico, de acuerdo con descripción
+
+          buscar un ejemplo
+          -->
+          <MontoItem>4309</MontoItem>
+        </Detalle>
+
+
+        <Referencia>
+            <!-- N° de Línea o N° Secuencial, largo 2, numerico, obligatorio.
+            Número de Dato de referencia. De 1 a 40 -->
+            <NroLinRef>
+
+            <!-- Tipo Documento de referencia, largo 3, alfanumnerico, condicional.
+            Indica si el documento de referencia es
+
+                39: Boleta electrónica
+                41: Boleta no afecta o exenta electrónica
+                50: Guía de despacho
+                52: Guía de despacho electrónica
+                801 Orden de Compra
+                802 Nota de pedido
+                803 Contrato
+                804 Resolución
+                805 Proceso ChileCompra
+                806 Ficha ChileCompra
+                813 Pasaporte 
+
+            validaciones:
+
+                1.- De acuerdo con la Descripción si se requiere referenciar un documento tributario se debe
+                    utilizar un valor Numérico que debe estar en el rango indicado en la descripción.
+                2.- el documento referenciado debe estar en la B/D
+            
+            -->
+            <TpoDocRef>
+
+
+            <!-- Folio de Referencia, largo 18, numerico, condicional.
+            Identificación del documento de referencia. Obligatorio en caso que se informe <TpoDocRef>
+
+            validacion: Folio de documento que referencia. -->
+            <FolioRef>
+
+            <!-- Código referencia, largo 18, numerico, opcional
+            Código alfanumérico establecido por la empresa para informar el dato al cliente -->
+            <CodRef>
+
+            <!-- Razón referencia, largo 90, alfanumnerico -->
+            <RazonRef>
+        </Referencia>
+
+
+        <TED version="1.0">
+          <DD>
+            <RE>76204700-4</RE>
+            <TD>39</TD><F>871571</F>
+            <FE>2022-01-07</FE>
+            <RR>0000004-3</RR>
+            <RSR>CLIENTE AL PASO</RSR>
+            <MNT>4309</MNT>
+            <IT1>PAN CORRIENTE</IT1>
+            <CAF version="1.0">
+              <DA>
+                <RE>76204700-4</RE>
+                <RS>CRISTIAN AREVALO MORALES Y CIA. LTDA.</RS>
+                <TD>39</TD>
+                <RNG>
+                  <D>864001</D><H>1164000</H>
+                </RNG>
+                <FA>2021-12-20</FA>
+                <RSAPK>
+                  <M>w/Ge+IMnr/0N35UmgDJ9USurxml/cEqvgZaftRWexxv2eJKqWCnC4s2qryJH11N2LUru4yiLItDDmAUqBTSYrQ==</M><E>Aw==</E>
+                </RSAPK>
+                <IDK>300</IDK>
+              </DA>
+              <FRMA algoritmo="SHA1withRSA">HB/hGZ4oZ8JQAbFVxLhdOc+My4tuin/GG+BSh51hWOwf/ARo0X2VIdg1LFR0aCoLSQjF6QWJ7xpo/ct0qRexBw==</FRMA>
+            </CAF>
+            <TSTED>2022-01-07T18:08:58</TSTED>
+          </DD>
+          <FRMT algoritmo="SHA1withRSA">  p04z7/5lLqFvBYu7ofeVXrSo8xFFit0zMDfqsJyeuA4luW/t6j3773E8CK3TS1f/uXdzlnbhSjHNVOHlSCFueA==  </FRMT>
+        </TED>
+        <TmstFirma>2022-01-07T18:08:58</TmstFirma>
+      </Documento>
+      <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+        <SignedInfo>
+          <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+          <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+          <Reference URI="#F871571T39">
+            <Transforms>
+              <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+            </Transforms>
+            <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+            <DigestValue>GqSEquIAF34pjaZNmZf2BWsiokc=</DigestValue>
+          </Reference>
+        </SignedInfo>
+        <SignatureValue>bBN+TEaagcOb0BlP2JX3DXAYqCvismbX44pJat1AUHmxcrF84R9nhUhyuEdkOC5IH67VnlqGVsZ/3HtBwDnGSVaRt/wA653E8zWHIQf8L9GwoISUYs8qUrTB9iDDLM9itaBeVnAxFqgGxghy2U7wR49lx9VZyihX3CJ8yNYWKM0=</SignatureValue>
+        <KeyInfo>
+          <KeyValue>
+            <RSAKeyValue>
+              <Modulus>vHEHvdIepdTfFqldJ/M7iKaNZfYVYAxD+ZV4AqnvXdrO/qEq7Ea7dC682mbfJRax  ZrhIKYjIfjp4O2JYs0FbJDOYzp3sBVxRTImrDw4IVkNky38WPoo4IiE6VzVn3vHl  tUJMFRejOYZI9yLRIMYi6vKz57BlBFAXSt0NE+76hS0=  </Modulus>
+              <Exponent>AQAB</Exponent>
+            </RSAKeyValue>
+          </KeyValue>
+          <X509Data>
+            <X509Certificate>MIIGYTCCBUmgAwIBAgIKR/biogAAAA/2qjANBgkqhkiG9w0BAQUFADCB0jELMAkG  A1UEBhMCQ0wxHTAbBgNVBAgTFFJlZ2lvbiBNZXRyb3BvbGl0YW5hMREwDwYDVQQH  EwhTYW50aWFnbzEUMBIGA1UEChMLRS1DRVJUQ0hJTEUxIDAeBgNVBAsTF0F1dG9y  aWRhZCBDZXJ0aWZpY2Fkb3JhMTAwLgYDVQQDEydFLUNFUlRDSElMRSBDQSBGSVJN  QSBFTEVDVFJPTklDQSBTSU1QTEUxJzAlBgkqhkiG9w0BCQEWGHNjbGllbnRlc0Bl  LWNlcnRjaGlsZS5jbDAeFw0yMDAxMTMxOTA5MzdaFw0yMzAxMTIxOTA5MzdaMIHi  MQswCQYDVQQGEwJDTDEeMBwGA1UECAwVUkVHScOTTiBERSBWQUxQQVJBSVNPMRQw  EgYDVQQHEwtTYW4gQW50b25pbzEsMCoGA1UEChMjQ1JJU1RJQU4gQVJFVkFMTyBN  T1JBTEVTIFkgQ0lBIExUREExJDAiBgNVBAsTG1BBTklGSUNBRE9SQSBZIFNVUEVS  TUVSQ0FETzEhMB8GA1UEAxMYQ1JJU1RJQU4gQVJFVkFMTyBNT1JBTEVTMSYwJAYJ  KoZIhvcNAQkBFhdqb3NlLm1hcmFtYmlvQGdtYWlsLmNvbTCBnzANBgkqhkiG9w0B  AQEFAAOBjQAwgYkCgYEAvHEHvdIepdTfFqldJ/M7iKaNZfYVYAxD+ZV4AqnvXdrO  /qEq7Ea7dC682mbfJRaxZrhIKYjIfjp4O2JYs0FbJDOYzp3sBVxRTImrDw4IVkNk  y38WPoo4IiE6VzVn3vHltUJMFRejOYZI9yLRIMYi6vKz57BlBFAXSt0NE+76hS0C  AwEAAaOCAqkwggKlMIIBTwYDVR0gBIIBRjCCAUIwggE+BggrBgEEAcNSBTCCATAw  LQYIKwYBBQUHAgEWIWh0dHA6Ly93d3cuZS1jZXJ0Y2hpbGUuY2wvQ1BTLmh0bTCB  /gYIKwYBBQUHAgIwgfEege4ARQBsACAAcgBlAHMAcABvAG4AZABlAHIAIABlAHMA  dABlACAAZgBvAHIAbQB1AGwAYQByAGkAbwAgAGUAcwAgAHUAbgAgAHIAZQBxAHUA  aQBzAGkAdABvACAAaQBuAGQAaQBzAHAAZQBuAHMAYQBiAGwAZQAgAHAAYQByAGEA  IABkAGEAcgAgAGkAbgBpAGMAaQBvACAAYQBsACAAcAByAG8AYwBlAHMAbwAgAGQA  ZQAgAGMAZQByAHQAaQBmAGkAYwBhAGMAaQDzAG4ALgAgAFAAbwBzAHQAZQByAGkA  bwByAG0AZQBuAHQAZQAsMB0GA1UdDgQWBBRkBd/xIXDzE6NddQbbKySIgeVV/TAL  BgNVHQ8EBAMCBPAwIwYDVR0RBBwwGqAYBggrBgEEAcEBAaAMFgoxMDU4MTU0MC05  MB8GA1UdIwQYMBaAFHjhPp/SErN6PI3NMA5Ts0MpB7NVMD4GA1UdHwQ3MDUwM6Ax  oC+GLWh0dHA6Ly9jcmwuZS1jZXJ0Y2hpbGUuY2wvZWNlcnRjaGlsZWNhRkVTLmNy  bDA6BggrBgEFBQcBAQQuMCwwKgYIKwYBBQUHMAGGHmh0dHA6Ly9vY3NwLmVjZXJ0  Y2hpbGUuY2wvb2NzcDA9BgkrBgEEAYI3FQcEMDAuBiYrBgEEAYI3FQiC3IMvhZOM  ZoXVnReC4twnge/sPGGBy54UhqiCWAIBZAIBBDAjBgNVHRIEHDAaoBgGCCsGAQQB  wQECoAwWCjk2OTI4MTgwLTUwDQYJKoZIhvcNAQEFBQADggEBAD9f043QzNFPd2nX  gAoTnRMt4lc1T6O3hQCVDN5lrYPpui7ADQ7+C/Et45W0f55yDPFYWplggCWtd3Er  xG+rMi98miVIj+w0ptn6Jk2suBM5Ymi2mEyanDHyETGn2CQet42rbDcmKHtstw2w  Li5zRx1raFzjFGD2yZbPo1ellqvYm8h4FrC13q+PfWfXx0jlCrkMa1f6lftYB0dJ  eSrUrp6i7vMDKZsYVVU3dUqSst9j4L30pDXsPXkrQbwJGzsjd7ld3753HUnhgBvb  vbLKRF85L5r9qJkZuxTPVGNoLBNehrKx3lzMP6eZ4Onkf/ihcpmNvlcLGl1y+gIw  DWaVct4=  </X509Certificate>
+          </X509Data>
+        </KeyInfo>
+      </Signature>
+    </DTE>
+
+    <!-- ======================== -->
+    <!-- segunda boleta -->
+    <!-- ======================== -->
+    <DTE version="1.0">
+      <Documento ID="F780401T39">
+        <Encabezado>
+          <IdDoc>
+            <TipoDTE>39</TipoDTE>
+            <Folio>780401</Folio>
+            <FchEmis>2022-01-07</FchEmis>
+            <IndServicio>3</IndServicio>
+            <FchVenc>2022-01-07</FchVenc>
+          </IdDoc>
+          <Emisor>
+            <RUTEmisor>76204700-4</RUTEmisor>
+          </Emisor>
+          <Receptor>
+            <RUTRecep>0000002-7</RUTRecep>
+            <RznSocRecep>CLIENTE BOLETA</RznSocRecep>
+            <DirRecep>A</DirRecep>
+            <CmnaRecep>ALGARROBO</CmnaRecep>
+          </Receptor>
+          <Totales>
+            <MntNeto>1950</MntNeto>
+            <IVA>370</IVA>
+            <MntTotal>2320</MntTotal>
+          </Totales>
+        </Encabezado>
+        <Detalle>
+          <NroLinDet>1</NroLinDet>
+          <CdgItem>
+            <TpoCodigo>Interna</TpoCodigo>
+            <VlrCodigo>1</VlrCodigo>
+          </CdgItem>
+          <NmbItem>PANADERIA</NmbItem>
+          <DscItem>.</DscItem>
+          <QtyItem>1</QtyItem>
+          <UnmdItem>UNID</UnmdItem>
+          <PrcItem>2320</PrcItem>
+          <MontoItem>2320</MontoItem>
+        </Detalle>
+        <TED version="1.0">
+          <DD>
+            <RE>76204700-4</RE>
+            <TD>39</TD><F>780401</F>
+            <FE>2022-01-07</FE>
+            <RR>0000002-7</RR>
+            <RSR>CLIENTE BOLETA</RSR>
+            <MNT>2320</MNT>
+            <IT1>PANADERIA</IT1>
+            <CAF version="1.0">
+              <DA>
+                <RE>76204700-4</RE>
+                <RS>CRISTIAN AREVALO MORALES Y CIA. LTDA.</RS>
+                <TD>39</TD>
+                <RNG>
+                  <D>614001</D><H>864000</H>
+                </RNG>
+                <FA>2021-09-20</FA>
+                <RSAPK>
+                  <M>xt70X0eiAnhP3tfdx4OBFLS3C1PQTJ7DA3obE8UJnHrv4XIxLPUQFxsbtmP8AOqa67JmlgJ6V9GYJA60JH6+LQ==</M><E>Aw==</E>
+                </RSAPK>
+                <IDK>300</IDK>
+              </DA>
+              <FRMA algoritmo="SHA1withRSA">S5aQvTu24NfETLjHHnEqoomybTBmWpz8FlYxvJzr3Qd5ZsshvfcWJQxzqP3pidgF2jgrESALHgNiiiqtZL8CCA==</FRMA>
+            </CAF>
+            <TSTED>2022-01-07T18:08:06</TSTED>
+          </DD>
+          <FRMT algoritmo="SHA1withRSA">  jmhceXuyEFJAlCkvRnL1ymlMtgP+0FGh3f2ihEQvYrN4Lrs6/cMqXB0b9iA4NyhKWyKXVg+r56GSsMxbUpbgbQ==  </FRMT>
+        </TED>
+        <TmstFirma>2022-01-07T18:08:06</TmstFirma>
+      </Documento>
+      <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+        <SignedInfo>
+          <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+          <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+          <Reference URI="#F780401T39">
+            <Transforms>
+              <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+            </Transforms>
+            <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+            <DigestValue>UnnyGVnYlVBZRpF6ScrL9F5Yao4=</DigestValue>
+          </Reference>
+        </SignedInfo>
+        <SignatureValue>XiCt5Gl7PxzWX3CYSVChGQ4dHhGE2nFyFiL8sIr0wYBldOrHICTc5JS0tVnlK+IaQ70cvtCZdT50DxxOYMtuSA27cTK6nvNQzPSOgY9kPYt7zIsdYhDX0XF6AQGPGXFleQuQai/9Pz5s5FB3O66Tco2+/7dGVvO+OplWCMbV0ZM=</SignatureValue>
+        <KeyInfo>
+          <KeyValue>
+            <RSAKeyValue>
+              <Modulus>vHEHvdIepdTfFqldJ/M7iKaNZfYVYAxD+ZV4AqnvXdrO/qEq7Ea7dC682mbfJRax  ZrhIKYjIfjp4O2JYs0FbJDOYzp3sBVxRTImrDw4IVkNky38WPoo4IiE6VzVn3vHl  tUJMFRejOYZI9yLRIMYi6vKz57BlBFAXSt0NE+76hS0=  </Modulus>
+              <Exponent>AQAB</Exponent>
+            </RSAKeyValue>
+          </KeyValue>
+          <X509Data>
+            <X509Certificate>MIIGYTCCBUmgAwIBAgIKR/biogAAAA/2qjANBgkqhkiG9w0BAQUFADCB0jELMAkG  A1UEBhMCQ0wxHTAbBgNVBAgTFFJlZ2lvbiBNZXRyb3BvbGl0YW5hMREwDwYDVQQH  EwhTYW50aWFnbzEUMBIGA1UEChMLRS1DRVJUQ0hJTEUxIDAeBgNVBAsTF0F1dG9y  aWRhZCBDZXJ0aWZpY2Fkb3JhMTAwLgYDVQQDEydFLUNFUlRDSElMRSBDQSBGSVJN  QSBFTEVDVFJPTklDQSBTSU1QTEUxJzAlBgkqhkiG9w0BCQEWGHNjbGllbnRlc0Bl  LWNlcnRjaGlsZS5jbDAeFw0yMDAxMTMxOTA5MzdaFw0yMzAxMTIxOTA5MzdaMIHi  MQswCQYDVQQGEwJDTDEeMBwGA1UECAwVUkVHScOTTiBERSBWQUxQQVJBSVNPMRQw  EgYDVQQHEwtTYW4gQW50b25pbzEsMCoGA1UEChMjQ1JJU1RJQU4gQVJFVkFMTyBN  T1JBTEVTIFkgQ0lBIExUREExJDAiBgNVBAsTG1BBTklGSUNBRE9SQSBZIFNVUEVS  TUVSQ0FETzEhMB8GA1UEAxMYQ1JJU1RJQU4gQVJFVkFMTyBNT1JBTEVTMSYwJAYJ  KoZIhvcNAQkBFhdqb3NlLm1hcmFtYmlvQGdtYWlsLmNvbTCBnzANBgkqhkiG9w0B  AQEFAAOBjQAwgYkCgYEAvHEHvdIepdTfFqldJ/M7iKaNZfYVYAxD+ZV4AqnvXdrO  /qEq7Ea7dC682mbfJRaxZrhIKYjIfjp4O2JYs0FbJDOYzp3sBVxRTImrDw4IVkNk  y38WPoo4IiE6VzVn3vHltUJMFRejOYZI9yLRIMYi6vKz57BlBFAXSt0NE+76hS0C  AwEAAaOCAqkwggKlMIIBTwYDVR0gBIIBRjCCAUIwggE+BggrBgEEAcNSBTCCATAw  LQYIKwYBBQUHAgEWIWh0dHA6Ly93d3cuZS1jZXJ0Y2hpbGUuY2wvQ1BTLmh0bTCB  /gYIKwYBBQUHAgIwgfEege4ARQBsACAAcgBlAHMAcABvAG4AZABlAHIAIABlAHMA  dABlACAAZgBvAHIAbQB1AGwAYQByAGkAbwAgAGUAcwAgAHUAbgAgAHIAZQBxAHUA  aQBzAGkAdABvACAAaQBuAGQAaQBzAHAAZQBuAHMAYQBiAGwAZQAgAHAAYQByAGEA  IABkAGEAcgAgAGkAbgBpAGMAaQBvACAAYQBsACAAcAByAG8AYwBlAHMAbwAgAGQA  ZQAgAGMAZQByAHQAaQBmAGkAYwBhAGMAaQDzAG4ALgAgAFAAbwBzAHQAZQByAGkA  bwByAG0AZQBuAHQAZQAsMB0GA1UdDgQWBBRkBd/xIXDzE6NddQbbKySIgeVV/TAL  BgNVHQ8EBAMCBPAwIwYDVR0RBBwwGqAYBggrBgEEAcEBAaAMFgoxMDU4MTU0MC05  MB8GA1UdIwQYMBaAFHjhPp/SErN6PI3NMA5Ts0MpB7NVMD4GA1UdHwQ3MDUwM6Ax  oC+GLWh0dHA6Ly9jcmwuZS1jZXJ0Y2hpbGUuY2wvZWNlcnRjaGlsZWNhRkVTLmNy  bDA6BggrBgEFBQcBAQQuMCwwKgYIKwYBBQUHMAGGHmh0dHA6Ly9vY3NwLmVjZXJ0  Y2hpbGUuY2wvb2NzcDA9BgkrBgEEAYI3FQcEMDAuBiYrBgEEAYI3FQiC3IMvhZOM  ZoXVnReC4twnge/sPGGBy54UhqiCWAIBZAIBBDAjBgNVHRIEHDAaoBgGCCsGAQQB  wQECoAwWCjk2OTI4MTgwLTUwDQYJKoZIhvcNAQEFBQADggEBAD9f043QzNFPd2nX  gAoTnRMt4lc1T6O3hQCVDN5lrYPpui7ADQ7+C/Et45W0f55yDPFYWplggCWtd3Er  xG+rMi98miVIj+w0ptn6Jk2suBM5Ymi2mEyanDHyETGn2CQet42rbDcmKHtstw2w  Li5zRx1raFzjFGD2yZbPo1ellqvYm8h4FrC13q+PfWfXx0jlCrkMa1f6lftYB0dJ  eSrUrp6i7vMDKZsYVVU3dUqSst9j4L30pDXsPXkrQbwJGzsjd7ld3753HUnhgBvb  vbLKRF85L5r9qJkZuxTPVGNoLBNehrKx3lzMP6eZ4Onkf/ihcpmNvlcLGl1y+gIw  DWaVct4=  </X509Certificate>
+          </X509Data>
+        </KeyInfo>
+      </Signature>
+    </DTE>
+  </SetDTE>
+
+    <!-- ======================== -->
+    <!-- firma -->
+    <!-- ======================== -->
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+      <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+      <Reference URI="#SetDoc">
+        <Transforms>
+          <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <DigestValue>iGNm+cKbYYPtlAAMNOYqiwvztko=</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue>sYMqc02jx8Adi9J7FNRhcnUxxrR8B5Tb69pOHRb3jxgCOYJh4v+zHWd9q/J7XDPNYQH/fs16LjwpI7ahF41H6CceNHG7J9kxxOedYcCpw46C/ED0cdlYQ6LyVpNWTzkkpd4tXI5rhZmkxt3tT5YwyV1UeNRFxhOT2ePXdfLnI4M=</SignatureValue>
+    <KeyInfo>
+      <KeyValue>
+        <RSAKeyValue>
+          <Modulus>vHEHvdIepdTfFqldJ/M7iKaNZfYVYAxD+ZV4AqnvXdrO/qEq7Ea7dC682mbfJRax  ZrhIKYjIfjp4O2JYs0FbJDOYzp3sBVxRTImrDw4IVkNky38WPoo4IiE6VzVn3vHl  tUJMFRejOYZI9yLRIMYi6vKz57BlBFAXSt0NE+76hS0=  </Modulus>
+          <Exponent>AQAB</Exponent>
+        </RSAKeyValue>
+      </KeyValue>
+      <X509Data>
+        <X509Certificate>MIIGYTCCBUmgAwIBAgIKR/biogAAAA/2qjANBgkqhkiG9w0BAQUFADCB0jELMAkG  A1UEBhMCQ0wxHTAbBgNVBAgTFFJlZ2lvbiBNZXRyb3BvbGl0YW5hMREwDwYDVQQH  EwhTYW50aWFnbzEUMBIGA1UEChMLRS1DRVJUQ0hJTEUxIDAeBgNVBAsTF0F1dG9y  aWRhZCBDZXJ0aWZpY2Fkb3JhMTAwLgYDVQQDEydFLUNFUlRDSElMRSBDQSBGSVJN  QSBFTEVDVFJPTklDQSBTSU1QTEUxJzAlBgkqhkiG9w0BCQEWGHNjbGllbnRlc0Bl  LWNlcnRjaGlsZS5jbDAeFw0yMDAxMTMxOTA5MzdaFw0yMzAxMTIxOTA5MzdaMIHi  MQswCQYDVQQGEwJDTDEeMBwGA1UECAwVUkVHScOTTiBERSBWQUxQQVJBSVNPMRQw  EgYDVQQHEwtTYW4gQW50b25pbzEsMCoGA1UEChMjQ1JJU1RJQU4gQVJFVkFMTyBN  T1JBTEVTIFkgQ0lBIExUREExJDAiBgNVBAsTG1BBTklGSUNBRE9SQSBZIFNVUEVS  TUVSQ0FETzEhMB8GA1UEAxMYQ1JJU1RJQU4gQVJFVkFMTyBNT1JBTEVTMSYwJAYJ  KoZIhvcNAQkBFhdqb3NlLm1hcmFtYmlvQGdtYWlsLmNvbTCBnzANBgkqhkiG9w0B  AQEFAAOBjQAwgYkCgYEAvHEHvdIepdTfFqldJ/M7iKaNZfYVYAxD+ZV4AqnvXdrO  /qEq7Ea7dC682mbfJRaxZrhIKYjIfjp4O2JYs0FbJDOYzp3sBVxRTImrDw4IVkNk  y38WPoo4IiE6VzVn3vHltUJMFRejOYZI9yLRIMYi6vKz57BlBFAXSt0NE+76hS0C  AwEAAaOCAqkwggKlMIIBTwYDVR0gBIIBRjCCAUIwggE+BggrBgEEAcNSBTCCATAw  LQYIKwYBBQUHAgEWIWh0dHA6Ly93d3cuZS1jZXJ0Y2hpbGUuY2wvQ1BTLmh0bTCB  /gYIKwYBBQUHAgIwgfEege4ARQBsACAAcgBlAHMAcABvAG4AZABlAHIAIABlAHMA  dABlACAAZgBvAHIAbQB1AGwAYQByAGkAbwAgAGUAcwAgAHUAbgAgAHIAZQBxAHUA  aQBzAGkAdABvACAAaQBuAGQAaQBzAHAAZQBuAHMAYQBiAGwAZQAgAHAAYQByAGEA  IABkAGEAcgAgAGkAbgBpAGMAaQBvACAAYQBsACAAcAByAG8AYwBlAHMAbwAgAGQA  ZQAgAGMAZQByAHQAaQBmAGkAYwBhAGMAaQDzAG4ALgAgAFAAbwBzAHQAZQByAGkA  bwByAG0AZQBuAHQAZQAsMB0GA1UdDgQWBBRkBd/xIXDzE6NddQbbKySIgeVV/TAL  BgNVHQ8EBAMCBPAwIwYDVR0RBBwwGqAYBggrBgEEAcEBAaAMFgoxMDU4MTU0MC05  MB8GA1UdIwQYMBaAFHjhPp/SErN6PI3NMA5Ts0MpB7NVMD4GA1UdHwQ3MDUwM6Ax  oC+GLWh0dHA6Ly9jcmwuZS1jZXJ0Y2hpbGUuY2wvZWNlcnRjaGlsZWNhRkVTLmNy  bDA6BggrBgEFBQcBAQQuMCwwKgYIKwYBBQUHMAGGHmh0dHA6Ly9vY3NwLmVjZXJ0  Y2hpbGUuY2wvb2NzcDA9BgkrBgEEAYI3FQcEMDAuBiYrBgEEAYI3FQiC3IMvhZOM  ZoXVnReC4twnge/sPGGBy54UhqiCWAIBZAIBBDAjBgNVHRIEHDAaoBgGCCsGAQQB  wQECoAwWCjk2OTI4MTgwLTUwDQYJKoZIhvcNAQEFBQADggEBAD9f043QzNFPd2nX  gAoTnRMt4lc1T6O3hQCVDN5lrYPpui7ADQ7+C/Et45W0f55yDPFYWplggCWtd3Er  xG+rMi98miVIj+w0ptn6Jk2suBM5Ymi2mEyanDHyETGn2CQet42rbDcmKHtstw2w  Li5zRx1raFzjFGD2yZbPo1ellqvYm8h4FrC13q+PfWfXx0jlCrkMa1f6lftYB0dJ  eSrUrp6i7vMDKZsYVVU3dUqSst9j4L30pDXsPXkrQbwJGzsjd7ld3753HUnhgBvb  vbLKRF85L5r9qJkZuxTPVGNoLBNehrKx3lzMP6eZ4Onkf/ihcpmNvlcLGl1y+gIw  DWaVct4=  </X509Certificate>
+      </X509Data>
+    </KeyInfo>
+  </Signature>
+</EnvioBOLETA>
