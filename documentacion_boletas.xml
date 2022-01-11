@@ -67,19 +67,13 @@
 
             <!-- Indicador Montos Netos, largo 1, numerico.
                  Este indicador se utiliza para expresar que el precio unitario y el valor de todas las líneas de
-                detalles corresponden a Montos netos, es decir no incluyen el IVA. 
+                 detalles corresponden a Montos netos, es decir no incluyen el IVA. 
                 
                 * No aplica en boleta exenta
-                * Opcional para boleta afecta
-
-                validaciones:
-
-                    1.- 2: Líneas de detalle indican montos netos
-
                 
-                (Agregar un ejemplo)
+                Por ahora, siempre mandaremos el valor 2 que corresponde a líneas de detalle indican montos netos
             -->
-            <IndMntNeto></IndMntNeto>
+            <IndMntNeto>2</IndMntNeto>
 
             
 
@@ -226,26 +220,20 @@
 
 
         <!-- Precio Unitario, largo 18, numerico, condicional.  
-            Precio con 12 enteros y 6 decimales.
-            Este precio es bruto con IVA, excepto cuando el Indicador Montos Netos tiene el valor 2.
-            Se debe indicar en el caso de venta de mercaderías o productos 
+             Precio con 12 enteros y 6 decimales.
+             
+             Como Indicador Montos Netos tiene el valor 2, este monto es neto
            -->
           <PrcItem>4309</PrcItem>
 
 
           <!-- Indicador exención, largo 1, numerico, condicional
 
-          Indica si el servicio es exento o no a impuesto o de monto no debe ser facturado. 
-          En el caso que sea 2, no se debe considerar para el cálculo del IVA del período. 
-          No se usa para saldo anterior
+            Indica que el detalle es exento de iva, en el caso de utilizarse 
+            siempre se debe ocupar el valor 1 (Producto o servicio es exento o no afecto)
 
-
-            si la linea esta marcada exenta el valor por defecto es 1, sino el tag no se agrega -->
+            Si no se ocupa no se agrega el tag -->
           <IndExe>1</IndExe>
-
-
-          <!-- no  considerado -->
-          <!-- <DscItem>.</DscItem> -->
 
           
           <!-- Porcentaje de Descuento, largo 5 numerico, opcional.
@@ -258,8 +246,8 @@
           <DescuentoPct>
           
           <!-- Monto Descuento, largo 18, numerico, condicional.
-          Correspondiente al anterior. Totaliza el descuento aplicado al ítem. Este monto es bruto
-          con IVA, excepto cuando el Indicador Montos Netos tiene el valor 2 
+
+          Corresponde al monto del porcentaje aplicado, por ahora es un monto neto porque Indicador Montos Netos tiene el valor 2 
           
           validaciones:
             1.- Valor Numérico. Si hay descuento en porcentaje, debe ir el monto del descuento.  -->
@@ -272,6 +260,7 @@
             1.- Valor Numérico, entre los valores 0 y 100 incluidos -->
           <RecargoPct>
 
+		  
           <!-- Monto Recargo, largo 18, numerico, condicional.
           Correspondiente al anterior. Totaliza el Recargo aplicado al item. Este monto es bruto con IVA,
           excepto cuando el Indicador Montos Netos tiene el valor 2
@@ -280,10 +269,14 @@
             1.- Valor Numérico. Si hay Recargo en porcentaje, debe ir el Monto del Recargo. -->
           <RecargoMonto>
 
+		  
+		  
           <!-- Valor por línea de detalle, largo 18, numerico, obligatorio.
           
           (Precio Unitario * Cantidad) - Monto Descuento + Monto Recargo
-          Este valor es bruto (con IVA), excepto cuando el campo "Indicador Montos Netos" tiene el valor 2
+
+        Por ahora es un monto neto porque Indicador Montos Netos tiene el valor 2
+
           
           validaciones:
             1.- Valor numérico, de acuerdo con descripción
